@@ -80,19 +80,37 @@
     extra2 { 
       display-name = "Purple";    
       status = "reserved";
-      bindings = <>;
+      bindings = <
+        &none &none &none &none &none &none &none                                                 &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &tog 5                                                &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &none        &none &none &none &none                  &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none                      &none &none                            &none &none &none &none  &none  &none
+        &none &none &none &none &none               &none &none &none &none &none &none                       &none &none &none  &none  &none
+      >;
     };
 
     extra3 { 
       display-name = "Cyan";    
       status = "reserved";
-      bindings = <>;
+      bindings = <
+        &none &none &none &none &none &none &none                                                 &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &tog 6                                                &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &none        &none &none &none &none                  &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none                      &none &none                            &none &none &none &none  &none  &none
+        &none &none &none &none &none               &none &none &none &none &none &none                       &none &none &none  &none  &none
+      >;
     };
 
     extra4 { 
       display-name = "Yellow";    
       status = "reserved";
-      bindings = <>;
+      bindings = <
+        &none &none &none &none &none &none &none                                                 &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &tog 7                                                &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none &none        &none &none &none &none                  &none &none &none &none &none  &none  &none
+        &none &none &none &none &none &none                      &none &none                            &none &none &none &none  &none  &none
+        &none &none &none &none &none               &none &none &none &none &none &none                       &none &none &none  &none  &none
+      >;
     };
   };
 };
