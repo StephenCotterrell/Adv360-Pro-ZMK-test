@@ -80,16 +80,19 @@
     extra2 { 
       display-name = "Purple";    
       status = "reserved";
+      bindings = <>;
     };
 
     extra3 { 
       display-name = "Cyan";    
       status = "reserved";
+      bindings = <>;
     };
 
     extra4 { 
       display-name = "Yellow";    
       status = "reserved";
+      bindings = <>;
     };
   };
 };
