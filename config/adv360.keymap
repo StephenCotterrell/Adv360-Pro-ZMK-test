@@ -34,25 +34,20 @@
         
         ht_lshift: hold_tap_lshift {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_LSHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
             flavor = "hold-preferred";
-            bindings = <
-                    &kp LSHIFT 
-                    &td_caps
-            >;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHIFT>,<&td_caps>;
+            display-name = "HOLD_TAP_LSHIFT";
         };
 
         ht_rshift: hold_tap_rshift {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_RSHIFT";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             flavor = "hold-preferred";
-            bindings = <
-                    &kp RSHIFT
-                    &td_caps
+            bindings = <&kp RSHIFT>,<&td_caps>;
+            display-name = "HOLD_TAP_RSHIFT";
             >;
         };
 
