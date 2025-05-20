@@ -20,21 +20,40 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        
-        td_lshift: tap_dance_lshift {
+
+        td_caps: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_LSHIFT";
+            label = "TAP_DANCE_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LSHIFT &caps_word>, <&kp CAPS>;
+            bindings = <
+                &caps_word
+                &kp CAPS
+            >;
+        };
+        
+        ht_lshift: hold_tap_lshift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_LSHIFT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <
+                    &kp LSHIFT 
+                    &td_caps
+            >;
         };
 
-        td_rshift: tap_dance_rshift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_RSHIFT";
+        ht_rshift: hold_tap_rshift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_RSHIFT";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RSHIFT &caps_word>, <&kp CAPS>;
+            flavor = "hold-preferred";
+            bindings = <
+                    &kp RSHIFT
+                    &td_caps
+            >;
         };
 
         ctrl_alt_macro: ctrl_alt_macro {
@@ -42,8 +61,8 @@
             label          = "CTRL+ALT";
             #binding-cells = <0>;
             bindings = <
-                &macro_press &kp LCTL &kp LALT
-                &macro_release &kp LALT &kp LCTL
+                &macro_press &kp LCTRL &kp LALT
+                &macro_release &kp LALT &kp LCTRL
             >;
         };
 
@@ -52,8 +71,8 @@
             label          = "CTRL+ALT+SHIFT";
             #binding-cells = <0>;
             bindings = <
-                &macro_press &kp LCTL &kp LALT &kp LSHIFT
-                &macro_release &kp LSHIFT &kp LALT &kp LCTL
+                &macro_press &kp LCTRL &kp LALT &kp LSHIFT
+                &macro_release &kp LSHIFT &kp LALT &kp LCTRL
             >;
         };
 
