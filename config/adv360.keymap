@@ -24,6 +24,7 @@
         ht_cw: hold_tap_caps_word {
             compatible = "zmk,behavior-hold-tap";
             flavor = "hold-preferred";
+            #binding-cells = <1>;
             tapping-term-ms = <200>; 
             bindings = <&kp>,<&caps_word>;
         };
