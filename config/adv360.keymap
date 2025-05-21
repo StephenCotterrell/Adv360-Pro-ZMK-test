@@ -76,8 +76,7 @@
                 &ctrl_alt_shift_macro
             >;
         };
-
-        td
+        
     };
 
     keymap {
