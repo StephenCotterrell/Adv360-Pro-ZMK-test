@@ -45,38 +45,13 @@
             bindings = <&ht_cw RSHIFT 0>, <&mt RSHIFT CAPSLOCK>;
         };
 
-        ctrl_alt_macro: ctrl_alt_macro {
-            compatible     = "zmk,behavior-macro";
-            label          = "CTRL+ALT";
-            #binding-cells = <0>;
-            bindings = <
-                &macro_press &kp LCTRL &kp LALT
-                &macro_release &kp LALT &kp LCTRL
-            >;
-        };
-
-        ctrl_alt_shift_macro: ctrl_alt_shift_macro {
-            compatible     = "zmk,behavior-macro";
-            label          = "CTRL+ALT+SHIFT";
-            #binding-cells = <0>;
-            bindings = <
-                &macro_press &kp LCTRL &kp LALT &kp LSHIFT
-                &macro_release &kp LSHIFT &kp LALT &kp LCTRL
-            >;
-        };
-
-        td_ctrl_combo: tap_dance_ctrl_combo {
-            compatible     = "zmk,behavior-tap-dance";
-            label          = "TAP_DANCE_CTRL_COMBO";
+        td_ctrl_combo: td_ctrl_combo {
+            compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <
-                &kp LCTRL
-                &ctrl_alt_macro
-                &ctrl_alt_shift_macro
-            >;
+            bindings = <&kp LCTRL>, <&kp LS(LCTRL)>, <&kp LA(LS(LCTRL))>, <&kp LG(LA(LS(LCTRL)))>;
         };
-        
+
     };
 
     keymap {
