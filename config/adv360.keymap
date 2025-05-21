@@ -21,21 +21,19 @@
             bindings = <&kp>, <&kp>;
         };
 
-        ht_scw: hold_tap_shift_caps_word {
+        ht_cw: hold_tap_caps_word {
             compatible = "zmk,behavior-hold-tap";
-            label = "HT_SHIFT_CAPS_WORD";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
             flavor = "hold-preferred";
-            bindings = <&kp LSHIFT &caps_word>;
+            #binding-cells = <1>;
+            tapping-term-ms = <200>; 
+            bindings = <&kp CAPS>,<&caps_word>;
         };
 
-        td_scw: tap_dance_shift_caps_capslock {
+        td_mt_cw: tap_dance_mod_tap_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "TD_SHIFT_CAPS_CAPSLOCK";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&ht_scw &kp CAPS>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>; 
+            bindings =  <&ht_cw>,<&kp>;
         };
 
         ctrl_alt_macro: ctrl_alt_macro {
@@ -80,7 +78,7 @@
                 &kp EQUAL   &kp N1     &kp N2  &kp N3       &kp N4      &kp N5  &tog 1                                                                              &mo 3       &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
                 &kp TAB     &kp Q      &kp W   &kp E        &kp R       &kp T   &none                                                                               &none       &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
                 &kp ESC     &kp A      &kp S   &kp D        &kp F       &kp G   &tog 4                 &td_ctrl_combo       &kp LALT      &kp LGUI   &kp RCTRL      &none       &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-                &td_scw     &kp Z      &kp X   &kp C        &kp V       &kp B                                               &kp HOME      &kp PG_UP                             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &td_scw 
+                &td_mt_cw LSHIFT 0  &kp Z      &kp X   &kp C        &kp V       &kp B                                               &kp HOME      &kp PG_UP                             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH &td_mt_cw RSHIFT 0
                 &mo 2       &kp GRAVE  &mo 1   &kp LEFT     &kp RIGHT           &mt LALT BACKSPACE     &mt LCTRL DELETE     &kp END       &kp PG_DN  &kp ENTER      &kp SPACE           &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
             >;
         };
