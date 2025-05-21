@@ -28,7 +28,7 @@
             tapping-term-ms = <200>;
             bindings = <&kp>, <&caps_word>;
             display-name = "Hold-Tap-Caps-Word";
-            }
+        };
 
         ctrl_alt_macro: ctrl_alt_macro {
             compatible     = "zmk,behavior-macro";
