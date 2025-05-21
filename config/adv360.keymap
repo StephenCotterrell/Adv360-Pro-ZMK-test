@@ -28,6 +28,7 @@
             tapping-term-ms = <200>;
             bindings = <&kp>, <&caps_word>;
             display-name = "Hold-Tap-Caps-Word";
+            hold-while-undecided;
         };
 
         td_c_cw_ls: td_c_cw_ls {
@@ -75,6 +76,8 @@
                 &ctrl_alt_shift_macro
             >;
         };
+
+        td
     };
 
     keymap {
