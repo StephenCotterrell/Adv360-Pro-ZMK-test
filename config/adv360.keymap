@@ -27,7 +27,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             flavor = "hold-preferred";
-            bindings = <&kp LSHIFT, &caps_word>;
+            bindings = <&kp LSHIFT &caps_word>;
         };
 
         td_scw: tap_dance_shift_caps_capslock {
@@ -35,7 +35,7 @@
             label = "TD_SHIFT_CAPS_CAPSLOCK";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&ht_scw, &kp CAPS>;
+            bindings = <&ht_scw &kp CAPS>;
         };
 
         ctrl_alt_macro: ctrl_alt_macro {
