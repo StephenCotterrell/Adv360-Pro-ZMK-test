@@ -25,23 +25,23 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <130>;
+            tapping-term-ms = <100>;
             bindings = <&kp>, <&caps_word>;
             display-name = "Hold-Tap-Caps-Word";
-            // hold-while-undecided;
+            hold-while-undecided;
         };
 
         td_c_cw_ls: td_c_cw_ls {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <100>;
             bindings = <&ht_cw LSHIFT 0>, <&mt LSHIFT CAPSLOCK>;
         };
 
         td_c_cw_rs: td_c_cw_rs {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <100>;
             bindings = <&ht_cw RSHIFT 0>, <&mt RSHIFT CAPSLOCK>;
         };
 
