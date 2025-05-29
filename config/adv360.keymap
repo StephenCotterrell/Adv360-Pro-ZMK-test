@@ -52,22 +52,13 @@
             bindings = <&kp LCTRL>, <&kp LS(LCTRL)>, <&kp LA(LS(LCTRL))>, <&kp LG(LA(LS(LCTRL)))>;
         };
 
-        ht_alt_bs: ht_alt_bs {
+        ht_wqt: ht_wqt {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
-            bindings = <&kp LALT>, <&kp BACKSPACE>;
-            display-name = "HT-Alt-Backspace";
-        };
-
-        ht_ctrl_del: ht_ctrl_del {
-            compatible = "zmk,behaviour-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <100>;
-            bindings = <&kp LCTRL>, <&kp DELETE>;
-            display-name = "HT-Ctrl-Delete";
+            bindings = <&kp>, <&kp>;
+            display-name = "Hold-Tap-Quick-Tap";
         };
 
     };
@@ -82,7 +73,7 @@
                 &kp TAB     &kp Q      &kp W   &kp E        &kp R       &kp T   &none                                                                   &none       &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
                 &kp ESC     &kp A      &kp S   &kp D        &kp F       &kp G   &tog 4         &td_ctrl_combo   &kp LALT      &kp LGUI   &kp RCTRL      &none       &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
                 &td_c_cw_ls &kp Z      &kp X   &kp C        &kp V       &kp B                                   &kp HOME      &kp PG_UP                             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &td_c_cw_rs
-                &mo 2       &kp GRAVE  &mo 1   &kp LEFT     &kp RIGHT           &ht_alt_bs 0 0 &ht_ctrl_del 0 0 &kp END       &kp PG_DN  &kp ENTER      &kp SPACE           &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
+                &mo 2       &kp GRAVE  &mo 1   &kp LEFT     &kp RIGHT           &ht_wqt LALT BACKSPACE &ht_wqt LCTRL BACKSPACE &kp END       &kp PG_DN  &kp ENTER      &kp SPACE           &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
             >;
         };
 
