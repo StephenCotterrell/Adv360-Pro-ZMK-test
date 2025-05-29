@@ -54,7 +54,7 @@
 
         ht_alt_bs: ht_alt_bs {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
             bindings = <&kp LALT>, <&kp BACKSPACE>;
@@ -62,7 +62,7 @@
 
         ht_ctrl_del: ht_ctrl_del {
             compatible = "zmk, behaviour-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
             bindings = <&kp LCTRL>, <&kp DELETE>;
