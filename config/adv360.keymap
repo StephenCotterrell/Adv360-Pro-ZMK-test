@@ -35,14 +35,14 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&ht_cw LSHIFT 0>, <&mt LSHIFT CAPSLOCK>;
+            bindings = <&kp LSHIFT>, <&ht_cw LSHIFT 0>, <&mt LSHIFT CAPSLOCK>;
         };
 
         td_c_cw_rs: td_c_cw_rs {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&ht_cw RSHIFT 0>, <&mt RSHIFT CAPSLOCK>;
+            bindings = <&kp RSHIFT>, <&ht_cw RSHIFT 0>, <&mt RSHIFT CAPSLOCK>;
         };
 
         td_ctrl_combo: td_ctrl_combo {
@@ -50,6 +50,22 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LCTRL>, <&kp LS(LCTRL)>, <&kp LA(LS(LCTRL))>, <&kp LG(LA(LS(LCTRL)))>;
+        };
+
+        ht_alt_bs: ht_alt_bs {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>;
+            bindings = <&kp LALT>, <&kp BACKSPACE>;
+        };
+
+        ht_ctrl_del: ht_ctrl_del {
+            compatible = "zmk, behaviour-hold-tap";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>;
+            bindings = <&kp LCTRL>, <&kp DELETE>;
         };
 
     };
@@ -60,11 +76,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-                &kp EQUAL   &kp N1     &kp N2  &kp N3       &kp N4      &kp N5  &tog 1                                                                              &mo 3       &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-                &kp TAB     &kp Q      &kp W   &kp E        &kp R       &kp T   &none                                                                               &none       &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-                &kp ESC     &kp A      &kp S   &kp D        &kp F       &kp G   &tog 4                 &td_ctrl_combo       &kp LALT      &kp LGUI   &kp RCTRL      &none       &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-                &td_c_cw_ls &kp Z      &kp X   &kp C        &kp V       &kp B                                               &kp HOME      &kp PG_UP                             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH &td_c_cw_rs
-                &mo 2       &kp GRAVE  &mo 1   &kp LEFT     &kp RIGHT           &mt LALT BACKSPACE     &mt LCTRL DELETE     &kp END       &kp PG_DN  &kp ENTER      &kp SPACE           &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
+                &kp EQUAL   &kp N1     &kp N2  &kp N3       &kp N4      &kp N5  &tog 1                                                                  &mo 3       &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+                &kp TAB     &kp Q      &kp W   &kp E        &kp R       &kp T   &none                                                                   &none       &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+                &kp ESC     &kp A      &kp S   &kp D        &kp F       &kp G   &tog 4         &td_ctrl_combo   &kp LALT      &kp LGUI   &kp RCTRL      &none       &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+                &td_c_cw_ls &kp Z      &kp X   &kp C        &kp V       &kp B                                   &kp HOME      &kp PG_UP                             &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &td_c_cw_rs
+                &mo 2       &kp GRAVE  &mo 1   &kp LEFT     &kp RIGHT           &ht_alt_bs     &ht_ctrl_del     &kp END       &kp PG_DN  &kp ENTER      &kp SPACE           &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 2
             >;
         };
 
