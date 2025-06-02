@@ -154,7 +154,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &mkp MB4  &mkp MB5  &trans    &trans     &mmv MOVE_LEFT  &mmv MOVE_DOWN     &mmv MOVE_RIGHT &kp LC(C)           &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &mkp MB3                      &trans     &msc SCRL_LEFT  &msc SCRL_UP       &msc SCRL_RIGHT &kp LC(X)           &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &mkp MB3  &mkp MB2  &mkp MB1             &trans          &msc SCRL_DOWN     &trans          &kp LC(Z)           &trans
-            >;m
+            >;
         };
 
         MediaControls {
