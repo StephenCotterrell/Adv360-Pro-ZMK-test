@@ -113,17 +113,26 @@
         };
     };
 
+    macros {
+        clear_line: clear_line {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(K)) &kp LS(LC(ENTER))>;
+            label = "CLEAR_LINE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "Base";
             bindings = <
-&kp EQUAL    &kp N1       &kp N2       &kp N3        &kp N4         &kp N5  &tog 1                                                                                             &mo 3      &kp N6  &kp N7         &kp N8        &kp N9       &kp N0          &kp MINUS
-&kp TAB      &kp Q        &kp W        &kp E         &kp R          &kp T   &tog 2                                                                                             &kp EQUAL  &kp Y   &kp U          &kp I         &kp O        &kp P           &kp BSLH
-&kp ESC      &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHIFT F  &kp G   &tog 6          &lazy_sticky_key LCTRL  &lazy_sticky_key LEFT_GUI      &kp LEFT_GUI     &kp ESC    &tog 5     &kp H   &hmr RSHIFT J  &hmr RCTRL K  &hmr RALT L  &hmr LGUI SEMI  &kp SQT
-&td_c_cw_ls  &kp Z        &kp X        &kp C         &kp V          &kp B                                           &mt LS(HOME) HOME              &mt LS(END) END                        &kp N   &kp M          &kp COMMA     &kp DOT      &kp FSLH        &td_c_cw_rs
-&mo 2        &kp GRAVE    &mo 1        &kp LEFT      &kp RIGHT              &lt_wqt 4 BSPC  &lt_wqt 5 DEL           &lt_wqt 7 K_APP                &kp TAB          &kp ENTER  &kp SPACE          &kp UP         &kp DOWN      &kp LBKT     &kp RBKT        &mo 2
+&kp EQUAL    &kp N1       &kp N2       &kp N3        &kp N4         &kp N5  &tog 1                                                                                          &mo 3      &kp N6  &kp N7         &kp N8        &kp N9       &kp N0          &kp MINUS
+&kp TAB      &kp Q        &kp W        &kp E         &kp R          &kp T   &tog 2                                                                                          &kp EQUAL  &kp Y   &kp U          &kp I         &kp O        &kp P           &kp BSLH
+&kp ESC      &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHIFT F  &kp G   &tog 6          &lazy_sticky_key LCTRL  &lazy_sticky_key LEFT_GUI      &kp LEFT_GUI  &kp TAB    &tog 5     &kp H   &hmr RSHIFT J  &hmr RCTRL K  &hmr RALT L  &hmr LGUI SEMI  &kp SQT
+&td_c_cw_ls  &kp Z        &kp X        &kp C         &kp V          &kp B                                           &caps_word                     &clear_line                         &kp N   &kp M          &kp COMMA     &kp DOT      &kp FSLH        &td_c_cw_rs
+&mo 2        &kp GRAVE    &mo 1        &kp LEFT      &kp RIGHT              &lt_wqt 4 BSPC  &lt_wqt 5 DEL           &lt_wqt 7 K_APP                &kp ESC       &kp ENTER  &kp SPACE          &kp UP         &kp DOWN      &kp LBKT     &kp RBKT        &mo 2
             >;
         };
 
