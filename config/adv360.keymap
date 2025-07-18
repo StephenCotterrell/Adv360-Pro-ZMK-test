@@ -2,6 +2,13 @@
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 600  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 10    // default: 10
+#define KEYS_L 0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 46 47 48 49 50 51 60 61 62 63 64
+#define THUMBS_LEFT 35 36 52 65 66 67
+#define KEYS_R 7 8 9 10 11 12 13 21 22 23 24 25 26 27 39 40 41 42 43 44 45 54 55 56 57 58 59 71 72 73 74 75
+#define THUMBS_RIGHT 37 38 53 68 69 70
+#define HM_TAPPING_TERM 280
+#define HM_PRIOR_IDLE 150
+#define HM_QUICK_TAP 175
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
@@ -22,14 +29,35 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
-            tapping-term-ms = <230>;
+            tapping-term-ms = <HM_TAPPING_TERM>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
-
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>;
+            quick-tap-ms = <HM_QUICK_TAP>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
             hold-trigger-on-release;
-            hold-trigger-key-positions = <7 8 9 12 13 11 10 21 39 37 37 53 68 69 70 26 37 38 39 40 41 42 43 44 53 54 55 56 57 58 68 69 70 71 72 73 74 22 23 24 25 26 27 40 41 42 43 44 45 54 55 56 57 58 59 70 71 72 73 74 75>;
+            hold-trigger-key-positions = <KEYS_R THUMBS_RIGHT>;
+        };
+
+        hm_r: homerow_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MOD_RIGHT";
+            bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <HM_TAPPING_TERM>;
+            quick-tap-ms = <HM_QUICK_TAP>;
+            require-prior-idle-ms = <HM_PRIOR_IDLE>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <KEYS_L THUMBS_LEFT>;
+            hold-trigger-on-release;
+        };
+
+        s_cw: shift_capsword {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SHIFT_CAPS_WORD";
+            #binding-cells = <0>;
+            bindings = <&skq LSHFT>, <&caps_word>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         ht_cw: ht_cw {
@@ -38,7 +66,6 @@
             flavor = "hold-preferred";
             tapping-term-ms = <50>;
             bindings = <&kp>, <&caps_word>;
-
             display-name = "Hold-Tap-Caps-Word";
             hold-while-undecided;
         };
@@ -48,7 +75,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings =
-                <&sk_shift LSHIFT>,
+                <&skq LSHIFT>,
                 <&ht_cw LSHIFT 0>,
                 <&mt LSHIFT CAPSLOCK>;
         };
@@ -58,7 +85,7 @@
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings =
-                <&sk_shift RSHIFT>,
+                <&skq RSHIFT>,
                 <&ht_cw RSHIFT 0>,
                 <&mt RSHIFT CAPSLOCK>;
         };
@@ -69,7 +96,6 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
             bindings = <&kp>, <&kp>;
-
             display-name = "Hold-Tap-Quick-Tap";
         };
 
@@ -80,25 +106,11 @@
             flavor = "balanced";
             quick-tap-ms = <150>;
             bindings = <&mo>, <&kp>;
-
             display-name = "Layer-Tap-Quick-Tap";
         };
 
-        hm_r: homerow_mod_right {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MOD_RIGHT";
-            bindings = <&kp>, <&kp>;
 
-            #binding-cells = <2>;
-            tapping-term-ms = <230>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>;
-            flavor = "balanced";
-            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 35 36 46 47 48 49 50 51 52 60 61 62 63 64 65 66 67>;
-            hold-trigger-on-release;
-        };
-
-        lazy_sticky_key: lazy_sticky_key {
+        lsk: lazy_sticky_key {
             compatible = "zmk,behavior-sticky-key";
             label = "LAZY_STICKY_KEY";
             bindings = <&kp>;
@@ -109,39 +121,13 @@
             ignore-modifiers;
         };
 
-        hm_shift_l: hm_shift_l {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HM_SHIFT_L";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <75>;
-            hold-trigger-key-positions = <7 8 9 12 13 11 10 21 39 37 37 53 68 69 70 26 37 38 39 40 41 42 43 44 53 54 55 56 57 58 68 69 70 71 72 73 74 22 23 24 25 26 27 40 41 42 43 44 45 54 55 56 57 58 59 70 71 72 73 74 75>;
-        };
-
-        hm_shift_r: hm_shift_r {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HM_SHIFT_R";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <75>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 35 36 46 47 48 49 50 51 52 60 61 62 63 64 65 66 67>;
-        };
-
-        sk_shift: sk_shift {
+        skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
-            label = "SK_SHIFT";
-            bindings = <&kp>;
             #binding-cells = <1>;
-            quick-release;
+            bindings = <&kp>;
             release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
         };
     };
 
@@ -177,10 +163,10 @@
             display-name = "Base";
             bindings = <
 &kp EQUAL    &kp N1        &kp N2        &kp N3         &kp N4                &kp N5  &tog 1                                                                                      &mo 3          &kp N6  &kp N7                &kp N8         &kp N9        &kp N0           &kp MINUS
-&kp TAB      &kp Q         &kp W         &kp E          &kp R                 &kp T   &tog 2                                                                                      &kp PAGE_UP    &kp Y   &kp U                 &kp I          &kp O         &kp P            &kp BSLH
-&kp ESC      &hm_l LGUI A  &hm_l LALT S  &hm_l LCTRL D  &hm_shift_l LSHIFT F  &kp G   &tog 6          &lazy_sticky_key LGUI  &lazy_sticky_key LCTRL      &kp LEFT_GUI  &kp TAB    &kp PAGE_DOWN  &kp H   &hm_shift_r RSHIFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r LGUI SEMI  &kp SQT
-&td_c_cw_ls  &kp Z         &kp X         &kp C          &kp V                 &kp B                                          &to 0                       &tog 5                                  &kp N   &kp M                 &kp COMMA      &kp DOT       &kp FSLH         &td_c_cw_rs
-&mo 2        &kp GRAVE     &mo 1         &kp LEFT       &kp RIGHT                     &lt_wqt 4 BSPC  &lt_wqt 5 DEL          &lt_wqt 7 K_APP             &gresc        &kp ENTER  &kp SPACE              &kp UP                &kp DOWN       &kp LBKT      &kp RBKT         &mo 2
+&kp TAB      &kp Q         &kp W         &kp E          &kp R                 &kp T   &tog 2                                                                                      &tog 5         &kp Y   &kp U                 &kp I          &kp O         &kp P            &kp BSLH
+&kp ESC      &hm_l LGUI A  &hm_l LALT S  &hm_l LCTRL D  &hm_l LSHIFT F        &kp G   &tog 6          &lsk LGUI              &lsk LCTRL                  &gresc        &kp TAB    &kp CAPS       &kp H   &hm_r RSHIFT J        &hm_r RCTRL K  &hm_r RALT L  &hm_r LGUI SEMI  &kp SQT
+&s_cw        &kp Z         &kp X         &kp C          &kp V                 &kp B                                          &to 0                       &kp PAGE_UP                             &kp N   &kp M                 &kp COMMA      &kp DOT       &kp FSLH         &s_cw
+&mo 2        &kp GRAVE     &mo 1         &kp LEFT       &kp RIGHT                     &lt_wqt 4 BSPC  &lt_wqt 5 DEL          &lt_wqt 7 K_APP             &kp PAGE_DOWN &kp ENTER  &kp SPACE              &kp UP                &kp DOWN       &kp LBKT      &kp RBKT         &mo 2
             >;
         };
 
