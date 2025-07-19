@@ -27,7 +27,6 @@
 
         hm_l: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
             tapping-term-ms = <HM_TAPPING_TERM>;
             flavor = "balanced";
@@ -38,9 +37,16 @@
             hold-trigger-key-positions = <KEYS_R THUMBS_RIGHT>;
         };
 
+        escgr: escape_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&kp ESC>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+            keep-mods = <(MOD_RGUI|MOD_RSFT|MOD_LGUI|MOD_LSFT)>;
+        };
+
         hm_r: homerow_mod_right {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MOD_RIGHT";
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             tapping-term-ms = <HM_TAPPING_TERM>;
@@ -53,7 +59,6 @@
 
         s_cw: shift_capsword {
             compatible = "zmk,behavior-mod-morph";
-            label = "SHIFT_CAPS_WORD";
             #binding-cells = <0>;
             bindings = <&skq LSHFT>, <&caps_word>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -112,7 +117,6 @@
 
         lsk: lazy_sticky_key {
             compatible = "zmk,behavior-sticky-key";
-            label = "LAZY_STICKY_KEY";
             bindings = <&kp>;
             #binding-cells = <1>;
             release-after-ms = <1000>;
@@ -136,24 +140,60 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(LS(K)) &kp LS(LC(ENTER))>;
-            label = "CLEAR_LINE";
         };
     };
 
     combos {
         compatible = "zmk,combos";
 
-        lbracket_12 {
-            bindings = <&kp LEFT_BRACKET>;
+        combo_1_2 {
+            bindings = <&kp LPAR>;
             key-positions = <1 2>;
             layers = <0>;
         };
 
-        rbracket_34 {
-            bindings = <&kp RIGHT_BRACKET>;
+        combo_2_3 {
+            bindings = <&kp LBKT>;
+            key-positions = <2 3>;
+            layers = <0>;
+        };
+
+        combo_3_4 {
+            bindings = <&kp LBRC>;
             key-positions = <3 4>;
             layers = <0>;
         };
+
+        combo_4_5 {
+            bindings = <&kp LT>;
+            key-positions = <4 5>;
+            layers = <0>;
+        };
+
+        combo_12_11 {
+            bindings = <&kp RPAR>;
+            key-positions = <12 11>;
+            layers = <0>;
+        };
+
+        combo_11_10 {
+            bindings = <&kp RBKT>;
+            key-positions = <11 10>;
+            layers = <0>;
+        };
+
+        combo_10_9 {
+            bindings = <&kp RBRC>;
+            key-positions = <10 9>;
+            layers = <0>;
+        };
+
+        combo_9_8 {
+            bindings = <&kp GT>;
+            key-positions = <9 8>;
+            layers = <0>;
+        };
+
     };
 
     keymap {
@@ -164,9 +204,9 @@
             bindings = <
 &kp EQUAL    &kp N1        &kp N2        &kp N3         &kp N4                &kp N5  &tog 1                                                                                      &mo 3          &kp N6  &kp N7                &kp N8         &kp N9        &kp N0           &kp MINUS
 &kp TAB      &kp Q         &kp W         &kp E          &kp R                 &kp T   &tog 2                                                                                      &tog 5         &kp Y   &kp U                 &kp I          &kp O         &kp P            &kp BSLH
-&kp ESC      &hm_l LGUI A  &hm_l LALT S  &hm_l LCTRL D  &hm_l LSHIFT F        &kp G   &tog 6          &lsk LGUI              &lsk LCTRL                  &gresc        &kp TAB    &kp CAPS       &kp H   &hm_r RSHIFT J        &hm_r RCTRL K  &hm_r RALT L  &hm_r LGUI SEMI  &kp SQT
+&gresc       &hm_l LGUI A  &hm_l LALT S  &hm_l LCTRL D  &hm_l LSHIFT F        &kp G   &tog 6          &lsk LGUI              &lsk LCTRL                  &gresc        &kp TAB    &kp CAPS       &kp H   &hm_r RSHIFT J        &hm_r RCTRL K  &hm_r RALT L  &hm_r LGUI SEMI  &kp SQT
 &s_cw        &kp Z         &kp X         &kp C          &kp V                 &kp B                                          &to 0                       &kp PAGE_UP                             &kp N   &kp M                 &kp COMMA      &kp DOT       &kp FSLH         &s_cw
-&mo 2        &kp GRAVE     &mo 1         &kp LEFT       &kp RIGHT                     &lt_wqt 4 BSPC  &lt_wqt 5 DEL          &lt_wqt 7 K_APP             &kp PAGE_DOWN &kp ENTER  &kp SPACE              &kp UP                &kp DOWN       &kp LBKT      &kp RBKT         &mo 2
+&mo 2        &escgr        &mo 1         &kp LEFT       &kp RIGHT                     &lt_wqt 4 BSPC  &lt_wqt 5 DEL          &lt_wqt 7 K_APP             &kp PAGE_DOWN &kp ENTER  &kp SPACE              &kp UP                &kp DOWN       &kp LBKT      &kp RBKT         &mo 2
             >;
         };
 
